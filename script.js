@@ -46,6 +46,15 @@ app.config(function($routeProvider){
       }
     }
   })
+  $routeProvider.when('/doctorInfo', {
+    controller: 'DoctorInfoCtrl', 
+    templateUrl: 'templates/doctorInfo.html',
+    resolve: { 
+      'currentAuth': function($firebaseAuth) {
+       return $firebaseAuth().$requireSignIn();
+      }
+    }
+  })
   $routeProvider.when('records/:recordsId', {
     controller: 'RecordsCtrl', 
     templateUrl: '/templates/records.html'
@@ -116,8 +125,8 @@ app.controller('MedicalHistoryCtrl', function($scope, $firebaseArray, $firebaseA
         $scope.prevConditions.$add($scope.newCondition);
         $scope.newCondition = "";
    }
-   $scope.addAlergy = function() {
-        $scope.allergies.$add($scope.newAlergy);
+   $scope.addAllergy = function() {
+        $scope.allergies.$add($scope.newAllergy);
         $scope.newAllergy = "";
    }
    $scope.addMedication = function() {
@@ -131,7 +140,7 @@ app.controller('MedicalHistoryCtrl', function($scope, $firebaseArray, $firebaseA
         $location.path('/insuranceInfo');
     }
 });
-app.controller('InsuranceInfoCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, currentAuth){ 
+app.controller('InsuranceInfoCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, $location, currentAuth){ 
    var insuranceInfoRef = firebase.database().ref().child('users').child(currentAuth.uid).child('insuranceInfo');
    $scope.insuranceInfo = $firebaseObject(insuranceInfoRef);
    $scope.updateInfo = function() {
@@ -142,9 +151,23 @@ app.controller('InsuranceInfoCtrl', function($scope, $firebaseArray, $firebaseAu
         $scope.insuranceInfo.phoneNumber = $scope.phoneNumber;
         $scope.insuranceInfo.policyNumber = $scope.policyNumber;
         $scope.insuranceInfo.$save();
+        $location.path('/doctorInfo');
     }
 });
-
+app.controller('DoctorInfoCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, currentAuth){ 
+   var DoctorInfoRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
+   $scope.doctors = $firebaseArray(DoctorInfoRef);
+   $scope.addDoctor = function() {
+        $scope.doctors.$add({
+            'name': $scope.newDoctorName,
+            'practiceName': $scope.newPracticeName,
+            'category': $scope.category,
+            'phone': $scope.newPhone,
+            'email': $scope.newEmail,
+            'fax': $scope.newFax
+        })
+    }
+});
 
 
 app.controller('HomeCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 

@@ -1,0 +1,26 @@
+<h2>Doctors</h2>
+<form ng-submit="updateInfo()">
+    <label>Doctor Name: </label>
+    <input ng-model="newDoctorName">
+    <label>Name of Practice: </label>
+    <input ng-model="newPracticeName">
+    <label>Type of Doctor/Specialty: </label>
+    <input ng-model="category">
+    <label>Phone Number: </label>
+    <input ng-model="newPhone">
+    <label>Email: </label>
+    <input ng-model="newEmail">
+    <label>Fax: </label>
+    <input ng-model="newFax">
+    <button ng-click="addDoctor()">Add Doctor</button>
+    <ol>
+        <li ng-repeat="doctor in doctors track by $index">
+          <h5>{{doctor.name}}, {{doctor.category}} at {{doctor.practiceName}}</h5>
+          <p>Phone: {{doctor.phone}}</p>
+          <p>Email: {{doctor.email}}</p>
+          <p>Fax: {{doctor.fax}}</p>
+          <button ng-click="doctors.$remove(doctor)">Delete Doctor</button>
+        </li>
+    </ol>
+</div>
+  
