@@ -2,30 +2,30 @@
 <div class = "error" ng-show = "errorMsg">
    <p>{{errorMsg}}</p>
 </div>
-<form ng-submit="updateInfo()">
+<form ng-submit="updateInsurance()">
   <div>
     <label>Plan Provider</label>
-    <input ng-model="planProvider">
+    <input ng-model="insuranceInfo.planProvider">
   </div>
   <div>
     <label>Plan Type</label>
-    <input ng-model="planType">
+    <input ng-model="insuranceInfo.planType">
   </div>
   <div>
     <label>Group Number</label>
-    <input ng-model="groupNumber">
+    <input ng-model="insuranceInfo.groupNumber">
   </div>
   <div>
     <label>Member ID</label>
-    <input ng-model="memberID">
+    <input ng-model="insuranceInfo.memberID">
   </div>
   <div>
     <label>Insurance Company Phone Number</label>
-    <input ng-model="phoneNumber">
+    <input ng-model="insuranceInfo.phoneNumber">
   </div> 
   <div>
     <label>Policy Number</label>
-    <input ng-model="policyNumber">
+    <input ng-model="insuranceInfo.policyNumber">
   </div>
-  <button type="submit">Submit Info</button>
+  <button type="submit">Update Info</button>
 </form>
