@@ -1,0 +1,31 @@
+<h2>Insurance Info</h2>
+<div class = "error" ng-show = "errorMsg">
+   <p>{{errorMsg}}</p>
+</div>
+<form ng-submit="updateInfo()">
+  <div>
+    <label>Plan Provider</label>
+    <input ng-model="planProvider">
+  </div>
+  <div>
+    <label>Plan Type</label>
+    <input ng-model="planType">
+  </div>
+  <div>
+    <label>Group Number</label>
+    <input ng-model="groupNumber">
+  </div>
+  <div>
+    <label>Member ID</label>
+    <input ng-model="memberID">
+  </div>
+  <div>
+    <label>Insurance Company Phone Number</label>
+    <input ng-model="phoneNumber">
+  </div> 
+  <div>
+    <label>Policy Number</label>
+    <input ng-model="policyNumber">
+  </div>
+  <button type="submit">Submit Info</button>
+</form>

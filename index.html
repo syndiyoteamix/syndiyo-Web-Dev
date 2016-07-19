@@ -1,0 +1,23 @@
+<html>
+<head>	
+	<title>Syndiyo</title>
+</head>
+<body ng-app="syndiyoApp">
+	<div ng-view></div>
+	<script src="angular.js"></script>
+	<script src="angular-route.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+	<script>
+  // Initialize Firebase
+  		var config = {
+  		apiKey: "AIzaSyA0DW_ERT6kwZ2dReW_8BkYhGxxmCknYig",
+  		authDomain: "syndiyo.firebaseapp.com",
+    	databaseURL: "https://syndiyo.firebaseio.com",
+    	storageBucket: "",
+  		};
+ 		firebase.initializeApp(config);
+	</script>
+	<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<h2>Medical History</h2>
+<form ng-submit="updateInfo()">
+  <div>
+    <label>Height (feet, inches)</label>
+    <input ng-model="heightFT"><input ng-model="heightInches">
+  </div>
+  <div>
+    <label>Weight (lbs)</label>
+    <input ng-model="weight">
+  </div>
+  <div>
+    <label>Previous Medical Conditions:</label>
+    <input ng-model="newCondition">
+    <button ng-click="addCondition()">Add Condition</button>
+    <ol>
+        <li ng-repeat="condition in prevConditions track by $index">
+        {{condition.$value}}
+        </li>
+    </ol>
+  </div>
+  <div>
+    <label>Allergies:</label>
+    <input ng-model="newAlergy">
+    <button ng-click="addAlergy()">Add Condition</button>
+    <ol>
+        <li ng-repeat="allergy in allergies track by $index">
+        {{allergy.$value}}
+        </li>
+    </ol>
+  </div>
+  <div>
+    <label>Current Medications:</label>
+    <input ng-model="newMedication">
+    <button ng-click="addMedication()">Add Condition</button>
+    <ol>
+        <li ng-repeat="medication in medications track by $index">
+        {{medication.$value}}
+        </li>
+    </ol>
+  </div>
+  <button type="submit">Update Info</button>
+</form>
