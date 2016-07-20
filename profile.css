@@ -111,6 +111,10 @@
 	margin-left: 20px;
 }
 
+.aboutMe {
+	text-align: center;
+}
+
 @media(max-width: 400px){
 
 }
