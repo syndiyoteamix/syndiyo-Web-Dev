@@ -193,6 +193,9 @@ app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){
         created_at: Date.now()
       });
 
+      // $scope.imgTitle = "";
+      // $scope.imgCategory = "";
+      // $scope.imgNotes = "";
 
     });
 
