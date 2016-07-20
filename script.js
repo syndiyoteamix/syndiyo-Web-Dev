@@ -28,27 +28,9 @@ app.config(function($routeProvider){
     controller: 'SignUpCtrl', 
     templateUrl:'/templates/signUp.html'
   })
-  $routeProvider.when('/medicalHistory', {
-    controller: 'MedicalHistoryCtrl', 
-    templateUrl: 'templates/medicalHistory.html',
-    resolve: { 
-      'currentAuth': function($firebaseAuth) {
-       return $firebaseAuth().$requireSignIn();
-      }
-    }
-  })
-  $routeProvider.when('/insuranceInfo', {
-    controller: 'InsuranceInfoCtrl', 
-    templateUrl: 'templates/insuranceInfo.html',
-    resolve: { 
-      'currentAuth': function($firebaseAuth) {
-       return $firebaseAuth().$requireSignIn();
-      }
-    }
-  })
-  $routeProvider.when('/doctorInfo', {
-    controller: 'DoctorInfoCtrl', 
-    templateUrl: 'templates/doctorInfo.html',
+  $routeProvider.when('/profile', {
+    controller: 'ProfileCtrl', 
+    templateUrl: 'templates/profile.html',
     resolve: { 
       'currentAuth': function($firebaseAuth) {
        return $firebaseAuth().$requireSignIn();
@@ -108,20 +90,25 @@ app.controller('SignUpCtrl', function($scope, $firebaseArray, $firebaseObject, $
       $scope.userInfo.DOB = $scope.DOB;
       $scope.userInfo.SSN = $scope.SSN;
       $scope.userInfo.$save();
-      $location.path('/medicalHistory');
+      $location.path('/profile');
     }).catch(function(error) {
         $scope.errorMsg = "Error: " + error;
         console.error("Error: ", error);
     })
   }
 });
-app.controller('MedicalHistoryCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, currentAuth, $location){ 
-   var medHistoryRef = firebase.database().ref().child('users').child(currentAuth.uid).child('medHistory');
-   $scope.medHistory = $firebaseObject(medHistoryRef);
-   $scope.prevConditions = $firebaseArray(medHistoryRef.child('prevConditions'));
-   $scope.allergies = $firebaseArray(medHistoryRef.child('allergies'));
-   $scope.medications = $firebaseArray(medHistoryRef.child('medications'));
-   $scope.addCondition = function() {
+
+app.controller('ProfileCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, currentAuth){
+    var userRef = firebase.database().ref().child('users').child(currentAuth.uid);
+    var medHistoryRef = userRef.child('medHistory');
+    $scope.medHistory = $firebaseObject(medHistoryRef);
+    $scope.prevConditions = $firebaseArray(medHistoryRef.child('prevConditions'));
+    $scope.allergies = $firebaseArray(medHistoryRef.child('allergies'));
+    $scope.medications = $firebaseArray(medHistoryRef.child('medications'));
+    $scope.insuranceInfo = $firebaseObject(userRef.child('insuranceInfo'));
+    $scope.doctors = $firebaseArray(userRef.child('doctors'));
+    $scope.index = 0;
+    $scope.addCondition = function() {
         $scope.prevConditions.$add($scope.newCondition);
         $scope.newCondition = "";
    }
@@ -134,30 +121,9 @@ app.controller('MedicalHistoryCtrl', function($scope, $firebaseArray, $firebaseA
         $scope.newMedication = "";
    }
    $scope.updateInfo = function () { 
-        $scope.medHistory.weight = $scope.weight;
-        $scope.medHistory.height = $scope.heightFT + "'" + $scope.heightInches;
         $scope.medHistory.$save();
-        $location.path('/insuranceInfo');
     }
-});
-app.controller('InsuranceInfoCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, $location, currentAuth){ 
-   var insuranceInfoRef = firebase.database().ref().child('users').child(currentAuth.uid).child('insuranceInfo');
-   $scope.insuranceInfo = $firebaseObject(insuranceInfoRef);
-   $scope.updateInfo = function() {
-        $scope.insuranceInfo.planProvider = $scope.planProvider;
-        $scope.insuranceInfo.planType = $scope.planType;
-        $scope.insuranceInfo.groupNumber = $scope.groupNumber;
-        $scope.insuranceInfo.phoneNumber = $scope.memberID;
-        $scope.insuranceInfo.phoneNumber = $scope.phoneNumber;
-        $scope.insuranceInfo.policyNumber = $scope.policyNumber;
-        $scope.insuranceInfo.$save();
-        $location.path('/doctorInfo');
-    }
-});
-app.controller('DoctorInfoCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, currentAuth){ 
-   var DoctorInfoRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
-   $scope.doctors = $firebaseArray(DoctorInfoRef);
-   $scope.addDoctor = function() {
+  $scope.addDoctor = function() {
         $scope.doctors.$add({
             'name': $scope.newDoctorName,
             'practiceName': $scope.newPracticeName,
@@ -167,6 +133,9 @@ app.controller('DoctorInfoCtrl', function($scope, $firebaseArray, $firebaseAuth,
             'fax': $scope.newFax
         })
     }
+     $scope.updateInsurance = function() {
+        $scope.insuranceInfo.$save();
+    }
 });
 
 
@@ -175,6 +144,7 @@ app.controller('HomeCtrl', function($scope, $firebaseObject, $firebaseAuth, curr
   var ref = firebase.database().ref().child('channels');
   $scope.channels = $firebaseObject(ref);
 });
+
 
 
 

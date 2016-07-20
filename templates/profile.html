@@ -1,0 +1,152 @@
+<div class="navbar">
+	<ul>
+		<li><button ng-click="index = 0">About Me</li>
+		<li><button ng-click="index = 1">Medical History</li>
+		<li><button ng-click="index = 2">Doctor Info</li>
+		<li><button ng-click="index = 3">Insurance Info</li>
+	</ul>
+</div>
+<div class = "profileContent">
+	<div ng-show = "(index === 0)" class="aboutMe">
+		
+	</div>
+
+	<div ng-show = "(index === 1)" class = "medHistory">
+		<h2>Medical History</h2>
+		<div>
+			<label>Previous Medical Conditions:</label>
+			<ul>
+				<li ng-repeat="condition in prevConditions track by $index">
+					{{condition.$value}}
+					<button ng-click="prevConditions.$remove(condition)">Remove Condition</button>
+				</li>
+			</ul>
+			<div>
+				<input ng-model="newCondition">
+				<button ng-click="addCondition()">Add Condition</button>
+			</div>
+			<div>
+				<label>Allergies:</label>
+				<ul>
+					<li ng-repeat="allergy in allergies track by $index">
+						{{allergy.$value}}
+						<button ng-click="allergies.$remove(allergy)">Remove Allergy</button>
+					</li>
+				</ul>
+				<input ng-model="newAllergy">
+				<button ng-click="addAllergy()">Add Allergy</button>
+			</div>
+			<div>
+				<label>Current Medications:</label>
+				<ul>
+					<li ng-repeat="medication in medications track by $index">
+						{{medication.$value}}
+						<button ng-click="medications.$remove(medication)">Remove Medication</button>
+					</li>
+				</ul>
+				<input ng-model="newMedication">
+				<button ng-click="addMedication()">Add Medication</button>
+			</div>
+			<form>
+				<div>
+					<label>Height (feet, inches)</label>
+					<input ng-model="medHistory.heightFT"><input ng-model="medHistory.heightIN">
+				</div>
+				<div>
+					<label>Weight (lbs)</label>
+					<input ng-model="medHistory.weight">
+				</div>
+				<button ng-click="updateInfo()">Update Info</button>
+			</form>
+		</div>
+	</div>
+	<div ng-show = "(index === 2)" class = "doctorInfo">
+		<h2>Doctors</h2>
+		<label>Doctor Name: </label>
+		<input ng-model="newDoctorName">
+		<label>Name of Practice: </label>
+		<input ng-model="newPracticeName">
+		<label>Type of Doctor/Specialty: </label>
+		<input ng-model="category">
+		<label>Phone Number: </label>
+		<input ng-model="newPhone">
+		<label>Email: </label>
+		<input ng-model="newEmail">
+		<label>Fax: </label>
+		<input ng-model="newFax">
+		<button ng-click="addDoctor()">Add Doctor</button>
+		<ol>
+			<li ng-repeat="doctor in doctors track by $index">
+				<h5>{{doctor.name}}, {{doctor.category}} at {{doctor.practiceName}}</h5>
+				<p>Phone: {{doctor.phone}}</p>
+				<p>Email: {{doctor.email}}</p>
+				<p>Fax: {{doctor.fax}}</p>
+				<button ng-click="doctors.$remove(doctor)">Delete Doctor</button>
+			</li>
+		</ol>
+	</div>
+	<div ng-show = "(index === 3)" class="insuranceInfo">
+		<h2>Insurance Info</h2>
+		<div class = "error" ng-show = "errorMsg">
+			<p>{{errorMsg}}</p>
+		</div>
+		<div ng-hide = "editInsurance">
+			<div>
+			<label>Plan Provider</label>
+			<p>{{insuranceInfo.planProvider}}</p>
+		</div>
+		<div>
+			<label>Plan Type</label>
+			<p>{{insuranceInfo.planType}}</p>
+		</div>
+		<div>
+			<label>Group Number</label>
+			<p>{{insuranceInfo.groupNumber}}</p>
+		</div>
+		<div>
+			<label>Member ID</label>
+			<p>{{insuranceInfo.memberID}}</p>
+		</div>
+		<div>
+			<label>Insurance Company Phone Number</label>
+			<p>{{insuranceInfo.phoneNumber}}</p>
+		</div> 
+		<div>
+			<label>Policy Number</label>
+			<p>{{insuranceInfo.policyNumber}}</p>
+		</div>
+	</div>
+	<button ng-click="editInsurance=true" ng-hide="editInsurance">Edit Insurance Info</button>
+	<div ng-show = "editInsurance">
+	<form>
+		<div>
+			<label>Plan Provider</label>
+			<input ng-model="insuranceInfo.planProvider">
+		</div>
+		<div>
+			<label>Plan Type</label>
+			<input ng-model="insuranceInfo.planType">
+		</div>
+		<div>
+			<label>Group Number</label>
+			<input ng-model="insuranceInfo.groupNumber">
+		</div>
+		<div>
+			<label>Member ID</label>
+			<input ng-model="insuranceInfo.memberID">
+		</div>
+		<div>
+			<label>Insurance Company Phone Number</label>
+			<input ng-model="insuranceInfo.phoneNumber">
+		</div> 
+		<div>
+			<label>Policy Number</label>
+			<input ng-model="insuranceInfo.policyNumber">
+		</div>
+		<button ng-click="updateInsurance(); editInsurance=false">Update Info</button>
+	</form>
+</div>
+</div>
+</div>
+
+

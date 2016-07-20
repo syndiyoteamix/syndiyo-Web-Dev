@@ -1,0 +1,34 @@
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+.navbar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 150px;
+	height: 100%;
+	text-align: center;
+	background-color: rgba(0,0,255,.6);
+}
+.navbar li {
+	width: 90%;
+	height: 20px;
+	margin: 5px auto;
+}
+
+.navbar li button{
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	border-radius: 5px;
+}
+.profileContent{
+	margin-left: 150px;
+	float: left;
+	padding: 0px 20px;
+}
+.profileContent ul {
+	margin-left: 20px;
+}
