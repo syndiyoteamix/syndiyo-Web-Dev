@@ -1,19 +1,28 @@
-<h2>Log in</h2>
-<!-- LOGIN FUNCTION SHOULD GO IN LOGIN CONTROLLER-->
-<form ng-submit="login()"> 
+<div class="container-fluid">
+  <div class="background-img">
+    <div class="main">
 
-  <div>
-    <label>Email</label>
-    <input ng-model="email">
-  </div>
-  
-  <div>
-    <label>Password</label>
-    <input ng-model="password">
-  </div>
-  
-  <button>Log in</button>
+      <p><img src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/SyndiyoLogo_zpsyudaapze.png"></p>
+      <p class="cr">Connecting Records. Improving Lives.</p>
 
-  <p>Not signed up? Do it <a href="#/signUp">here!</a></p>
-  
-</form>
+      <h2>Log in</h2>
+
+      <form ng-submit="login()"> 
+
+        <div class="email">
+          <input placeholder="Email" ng-model="email">
+        </div>
+        
+        <div class="password">
+          <input type="password" placeholder="Password" ng-model="password">
+        </div>
+        
+        <button>Submit</button>
+
+        <p>Not signed up? Do it <a href="#/signUp">here!</a>
+        </p>
+        
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.background-img { 
+
+	background-image: url("http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/lpBackground_zpsmfatvxv1.jpg");
+	background-size: cover;
+	height: 700px;
+
+}
+
+
+
+.cn { 
+	color: #2f5878;
+	font-size: 30px;
+
+}
+
+.inputs { 
+	margin: 0px auto;
+	width: 100%;
+
+	position: fixed;
+	top: 50%;
+	transform: translate(0, -50%);
+	text-align: center;
+
+}
+
+.inputs input { 
+	width: 300px;
+
+}
