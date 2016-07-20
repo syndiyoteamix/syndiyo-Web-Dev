@@ -58,12 +58,12 @@ app.config(function($routeProvider){
   })
   $routeProvider.when('/send', {
     controller: 'SendCtrl', 
-    templateUrl: '/templates/send.html'
-    // resolve: { 
-    //   'currentAuth': function($firebaseAuth) {
-    //    return $firebaseAuth().$requireSignIn();
-    //   }
-    
+    templateUrl: '/templates/send.html',
+    resolve: { 
+      'currentAuth': function($firebaseAuth) {
+       return $firebaseAuth().$requireSignIn();
+      }
+    }
   })
 
 });
@@ -247,6 +247,13 @@ app.controller('SendCtrl', function($scope, $firebaseObject, $firebaseAuth, curr
   var doctorRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
   $scope.doctors = $firebaseObject(doctorRef);
   console.log($scope.doctors);
+  var recordRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
+  $scope.records = $firebaseObject(recordRef);
+  console.log($scope.records);
+
+  $scope.sendRecord = function() {
+      console.log($scope.selectedRecord);
+  };
 
 
   $scope.sendMail = function() {
