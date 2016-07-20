@@ -1,9 +1,7 @@
 .background-img { 
-
 	background-image: url("http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/lpBackground_zpsmfatvxv1.jpg");
 	background-size: cover;
-	height: 700px;
-
+	width: 100wh;
 }
 
 .main { 

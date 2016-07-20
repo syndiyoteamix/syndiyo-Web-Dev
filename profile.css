@@ -17,26 +17,38 @@
 	height: 40px;
 }
 .lionLogo { 
-	display: inline;
-	float: ;
+	display: block;
+	float: left;
+	margin-top: 5px;
 	height: 50px;
 	width: 50px;
 	border-radius: 25px;
 }
 
 .headerRight{ 
-	position: absolute;
+	position: fixed;
 	right: 0;
 	top: 0;
-	width: 190px;
+	width: 170px;
 }
 .headerText {
 	float: right;
-	width: 140px;
-	font-size: 20px;
+	position: relative;
+	top: -15px;
+	width: 120px;
+	text-align: center;
 }
 .headerText h1 {
 	font-size: 20px;
+	color: #1b4162;
+}
+.headerText a {
+	font-size: 10px;
+	text-decoration: none;
+	color: #1b4162;
+	padding: 3px;
+	border: 1px solid ;
+	border-radius: 3px;
 }
 .profileName {
 	font-size: 20px;
@@ -88,9 +100,17 @@
 	height: 100%;
 	background-color: #e6e6e6;
 	border-radius: 5px;
+	border: none;
 }
 
 .navbarLeft li button:hover{
 	border: 2px solid #1b4162;
 	transform: translate(0px, -.5px);
+}
+.profileContent ul, .profileContent ol {
+	margin-left: 20px;
+}
+
+@media(max-width: 400px){
+
 }
