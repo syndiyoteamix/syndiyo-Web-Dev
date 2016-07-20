@@ -3,6 +3,12 @@
 	margin: 0px;
 	padding: 0px;
 }
+
+.big_class {
+	background-color: #e6e6e6;
+	position: relative;
+}
+
 .navbar {
 	position: fixed;
 	left: 0;
@@ -10,7 +16,7 @@
 	width: 150px;
 	height: 100%;
 	text-align: center;
-	background-color: rgba(0,0,255,.6);
+	background-color: #1b4162;
 }
 .navbar li {
 	width: 90%;
@@ -25,9 +31,20 @@
 	border-radius: 5px;
 }
 .profileContent{
+	background-color: white;
+	width: 60%;
+	/*height: 50%;*/
 	margin-left: 150px;
 	float: left;
 	padding: 0px 20px;
+	/*text-align: center;*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-60%,-60%);
+}
+.profileContent div {
+	padding-top: 20px;
 }
 .profileContent ul {
 	margin-left: 20px;
