@@ -221,6 +221,8 @@ app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray, $
 
 
 app.controller('RequestCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 
+  var userRef = firebase.database().ref().child('users').child(currentAuth.uid).child('basicInfo');
+  $scope.userInfo = $firebaseObject(userRef);
   var doctorRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
   $scope.doctors = $firebaseObject(doctorRef);
   console.log($scope.doctors);
@@ -242,6 +244,8 @@ app.controller('RequestCtrl', function($scope, $firebaseObject, $firebaseAuth, c
 });
 
 app.controller('SendCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 
+  var userRef = firebase.database().ref().child('users').child(currentAuth.uid).child('basicInfo');
+  $scope.userInfo = $firebaseObject(userRef);
   var doctorRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
   $scope.doctors = $firebaseObject(doctorRef);
   console.log($scope.doctors);
