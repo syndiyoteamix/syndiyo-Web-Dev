@@ -1,0 +1,13 @@
+<ul>
+	<li ng-repeat="record in healthRecords track by $index">
+		<div>
+		<p>Title: {{record.title}}</p>
+		<p>Category: {{record.category}}</p>
+		<p>Notes: {{record.notes}}</p>
+		<p>Created: {{record.date}}</p>
+	</div>
+		<div class="recordImg">
+			<img src="{{record.image}}"/>
+		</div>
+	</li>
+</ul>
