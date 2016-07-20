@@ -13,7 +13,7 @@ app.run(["$rootScope", "$location", function($rootScope, $location) {
 app.config(function($routeProvider){ 
 	$routeProvider.when('/', { 
 		controller: 'HomeCtrl',
-		templateUrl: '/templates/home.html',
+		templateUrl: '/templates/profile.html',
     resolve: { 
       'currentAuth': function($firebaseAuth) {
       return $firebaseAuth().$requireSignIn();
@@ -27,15 +27,6 @@ app.config(function($routeProvider){
   $routeProvider.when('/signUp', {
     controller: 'SignUpCtrl', 
     templateUrl:'/templates/signUp.html'
-  })
-  $routeProvider.when('/profile', {
-    controller: 'ProfileCtrl', 
-    templateUrl: 'templates/profile.html',
-    resolve: { 
-      'currentAuth': function($firebaseAuth) {
-       return $firebaseAuth().$requireSignIn();
-      }
-    }
   })
   $routeProvider.when('records/:recordsId', {
     controller: 'RecordsCtrl', 
@@ -104,7 +95,7 @@ app.controller('SignUpCtrl', function($scope, $firebaseArray, $firebaseObject, $
   }
 });
 
-app.controller('ProfileCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, currentAuth){
+app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, currentAuth){
     var userRef = firebase.database().ref().child('users').child(currentAuth.uid);
     var medHistoryRef = userRef.child('medHistory');
     $scope.medHistory = $firebaseObject(medHistoryRef);
@@ -138,6 +129,12 @@ app.controller('ProfileCtrl', function($scope, $firebaseArray, $firebaseAuth, $f
             'email': $scope.newEmail,
             'fax': $scope.newFax
         })
+        $scope.newDoctorName = "";
+        $scope.newPracticeName = "";
+        $scope.category = "";
+        $scope.newPhone = "";
+        $scope.newEmail = "";
+        $scope.newFax = "";
     }
      $scope.updateInsurance = function() {
         $scope.insuranceInfo.$save();
@@ -145,6 +142,9 @@ app.controller('ProfileCtrl', function($scope, $firebaseArray, $firebaseAuth, $f
 });
 
 app.controller('RequestCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 
+  var UserRef = firebase.database().ref().child('users').child(currentAuth.uid);
+  $scope.user = $firebaseObject(UserRef);
+  var userName = $scope.user.name;
   var doctorRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
   $scope.doctors = $firebaseObject(doctorRef);
   console.log($scope.doctors);
@@ -159,14 +159,16 @@ app.controller('RequestCtrl', function($scope, $firebaseObject, $firebaseAuth, c
 
   $scope.sendMail2 = function() {
       var email = $scope.recipient;
+      
 
-      window.location.href = ("mailto:" + email +'?subject=hello&body=the_body&attachment=pdf.pdf');
+      window.location.href = ("mailto:" + email +'?subject=Medical Record Request&body=I, ' + userName + ' , ("Patient") hereby request my Health Records.');
       
       // window.open('mailto:'+email+'?subject=hello&body=the_body');
       // window.open('mailto:'+email2+'?subject=hello&body=the_body');
       $scope.recipient = "";
     };
 });
+
 
 
 
