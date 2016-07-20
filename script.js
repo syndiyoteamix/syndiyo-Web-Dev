@@ -28,7 +28,7 @@ app.config(function($routeProvider){
     controller: 'SignUpCtrl', 
     templateUrl:'/templates/signUp.html'
   })
-  $routeProvider.when('records/:recordsId', {
+  $routeProvider.when('/records', {
     controller: 'RecordsCtrl', 
     templateUrl: '/templates/records.html',
     resolve: { 
@@ -169,7 +169,11 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
         $scope.userInfo.$save();
         }  
 });
-
+app.controller('RecordsCtrl', function(currentAuth, $scope, $firebaseArray){ 
+    var HealthRecordsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
+    $scope.healthRecords = $firebaseArray(HealthRecordsRef);
+    console.log($scope.healthRecords);
+});
 
 app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){ 
   var HealthRecordsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
@@ -203,22 +207,14 @@ app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){
         created_at: Date.now()
       });
 
+      // $scope.imgTitle = "";
+      // $scope.imgCategory = "";
+      // $scope.imgNotes = "";
 
     });
 
   }
  }); 
-
-
-
-  // var imgRef = firebase.storage().ref('imageslionSex1.png');
-  // storageRef.getDownloadURL().then(function(url) {
-  // // Get the download URL for 'images/stars.jpg'
-  // // This can be inserted into an <img> tag
-  // // This can also be downloaded directly
-  // }).catch(function(error) {
-  // // Handle any errors
-  // });
 
 
 
