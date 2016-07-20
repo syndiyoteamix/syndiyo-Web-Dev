@@ -1,0 +1,20 @@
+<div class="request_Records">
+
+	<div class="selectDoctor">
+		<h2>Select a Doctor</h2>
+
+		<!-- list of all doctors -->
+		<div class="requestOldDoctor">
+			<h4>Select one of your previously entered doctors</h4>
+			<select ng-model="selectedDoctor" ng-options="d.name for d in doctors"></select>
+			<button ng-click="sendMail()">Send an Email</button>
+		</div>
+
+		<div class="requestNewDoctor">
+			<h4>Or enter a new doctor's email address</h4>
+			<input ng-model="recipient">
+			<button ng-click="sendMail2()">Send an Email</button>
+		</div>
+	</div>
+
+</div>
