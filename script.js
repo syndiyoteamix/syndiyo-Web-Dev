@@ -169,9 +169,10 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
         $scope.userInfo.$save();
         }  
 });
-app.controller('RecordsCtrl', function(currentAuth, $scope, $firebaseArray){ 
-    var HealthRecordsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
-    $scope.healthRecords = $firebaseArray(HealthRecordsRef);
+app.controller('RecordsCtrl', function(currentAuth, $scope, $firebaseArray, $firebaseObject){ 
+    var userRef = firebase.database().ref().child('users').child(currentAuth.uid);
+    $scope.healthRecords = $firebaseArray(userRef.child('healthRecords'));
+    $scope.userInfo = $firebaseObject(userRef.child('basicInfo'));
     console.log($scope.healthRecords);
 });
 
