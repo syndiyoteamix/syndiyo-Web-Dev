@@ -13,7 +13,7 @@ app.run(["$rootScope", "$location", function($rootScope, $location) {
 app.config(function($routeProvider){ 
 	$routeProvider.when('/', { 
 		controller: 'HomeCtrl',
-		templateUrl: '/templates/home.html',
+		templateUrl: '/templates/profile.html',
     resolve: { 
       'currentAuth': function($firebaseAuth) {
       return $firebaseAuth().$requireSignIn();
@@ -27,15 +27,6 @@ app.config(function($routeProvider){
   $routeProvider.when('/signUp', {
     controller: 'SignUpCtrl', 
     templateUrl:'/templates/signUp.html'
-  })
-  $routeProvider.when('/profile', {
-    controller: 'ProfileCtrl', 
-    templateUrl: 'templates/profile.html',
-    resolve: { 
-      'currentAuth': function($firebaseAuth) {
-       return $firebaseAuth().$requireSignIn();
-      }
-    }
   })
   $routeProvider.when('records/:recordsId', {
     controller: 'RecordsCtrl', 
@@ -98,7 +89,7 @@ app.controller('SignUpCtrl', function($scope, $firebaseArray, $firebaseObject, $
   }
 });
 
-app.controller('ProfileCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, currentAuth){
+app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $firebaseObject, currentAuth){
     var userRef = firebase.database().ref().child('users').child(currentAuth.uid);
     var medHistoryRef = userRef.child('medHistory');
     $scope.medHistory = $firebaseObject(medHistoryRef);
@@ -136,13 +127,6 @@ app.controller('ProfileCtrl', function($scope, $firebaseArray, $firebaseAuth, $f
      $scope.updateInsurance = function() {
         $scope.insuranceInfo.$save();
     }
-});
-
-
-app.controller('HomeCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 
-  $scope.curUser = currentAuth; 
-  var ref = firebase.database().ref().child('channels');
-  $scope.channels = $firebaseObject(ref);
 });
 
 

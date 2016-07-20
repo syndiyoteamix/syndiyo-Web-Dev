@@ -17,18 +17,30 @@
 	height: 40px;
 }
 .lionLogo { 
+	display: inline;
+	float: ;
 	height: 50px;
 	width: 50px;
 	border-radius: 25px;
 }
-.headerRight { 
-	margin-top: -20px;
-}
 
-.headerRight h1 { 
-	text-align: right;
-	font-size: 25px;
-	padding-right: 10px;
+.headerRight{ 
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 190px;
+}
+.headerText {
+	float: right;
+	width: 140px;
+	font-size: 20px;
+}
+.headerText h1 {
+	font-size: 20px;
+}
+.profileName {
+	font-size: 20px;
+	min-width: 200px;
 }
 .sq img { 
 	display: block;
