@@ -175,7 +175,9 @@ app.controller('RecordsCtrl', function(currentAuth, $scope, $firebaseArray){
     console.log($scope.healthRecords);
 });
 
-app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){ 
+app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray, $firebaseObject){ 
+  var userRef = firebase.database().ref().child('users').child(currentAuth.uid).child('basicInfo');
+  $scope.userInfo = $firebaseObject(userRef);
   var HealthRecordsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
   $scope.healthRecords = $firebaseArray(HealthRecordsRef);
   $scope.uploadFile = function() { 
