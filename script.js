@@ -167,7 +167,43 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
       // $scope.userInfo.DOB = $scope.DOB;
      $scope.updateAbout = function() {
         $scope.userInfo.$save();
-        }  
+        } 
+
+    var ProfPicsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('basicInfo').child('profPic');
+    $scope.profPic = $firebaseObject(ProfPicsRef);
+    $scope.uploadProfPic = function() { 
+    var f = document.getElementById('file').files[0],
+        r = new FileReader();
+        console.log(f);
+      r.onloadend = function(e){
+        var data = e.target.result;
+      } 
+      r.readAsBinaryString(f);
+    var storageRef = firebase.storage().ref('ProfPics/' + f.name);
+    var uploadTask = storageRef.put(f);
+    
+    uploadTask.on('state_changed', function(snapshot){
+      // Observe state change events such as progress, pause, and resume
+      // See below for more detail
+    }, function(error) {
+      // Handle unsuccessful uploads
+    }, function() {
+      // Handle successful uploads on complete
+      console.log($scope.profPic);
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      $scope.downloadURL = uploadTask.snapshot.downloadURL;
+      console.log($scope.downloadURL);
+      $scope.profPic=$scope.downloadURL;
+      $scope.profPic.$save(); 
+
+
+      // $scope.imgTitle = "";
+      // $scope.imgCategory = "";
+      // $scope.imgNotes = "";
+
+    });
+
+    }     
 });
 app.controller('RecordsCtrl', function(currentAuth, $scope, $firebaseArray){ 
     var HealthRecordsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
@@ -186,7 +222,7 @@ app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){
         var data = e.target.result;
       } 
       r.readAsBinaryString(f);
-    var storageRef = firebase.storage().ref(f.name);
+    var storageRef = firebase.storage().ref('RecordsPic/' + f.name);
     var uploadTask = storageRef.put(f);
     
     uploadTask.on('state_changed', function(snapshot){

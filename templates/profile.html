@@ -3,7 +3,7 @@
 <div class="navbarTop">
 			<a href="#/"><img class="Slogo" src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/SyndiyoLogo_zpsyudaapze.png" border="0" alt=" photo SyndiyoLogo_zpsyudaapze.png"/></a>			
 			<div class="headerRight">
-			<img class="lionLogo" src="http://i347.photobucket.com/albums/p448/robertcas257/lionProfile_zpsrnqzrjmx.png" border="0" alt=" photo lionProfile_zpsrnqzrjmx.png"/>
+			<img class="lionLogo" src="{{userInfo.profPic}}" border="0" alt=" photo lionProfile_zpsrnqzrjmx.png"/>
 			<div class = "headerText">
 				<h1>My profile</h1>
 				<a href="/#/login" ng-click="authObj.$signOut();">Sign out</a>
@@ -52,46 +52,65 @@
 	</div>
 	<div ng-hide = "(index === 0)" class="profileContent">	
 		<div ng-show = "(index === 1)" class="aboutMe">
-			<h2>About Me </h2>
-			<div ng-hide = "editAbout">
-				<div>
-					<label>First Name</label> <br>
-					<p>{{userInfo.firstName}}</p>
+			<div>
+				
+				<div class="profDiv" >
+					<img class="profImg" src="{{profPic.$value}}"/>
 				</div>
-				<div>
-					<label>Last Name</label><br>
-					<p>{{userInfo.lastName}}</p>
-				</div>
-				<div>
-					<label>Email</label><br>
-					<p>{{userInfo.email}}</p>
-				</div>
-				<div>
-					<label>Date of Birth (MM/DD/YYYY)</label><br>
-					<p>{{userInfo.DOB}}</p>
-				</div>
+				<h4>Upload Profile Picture</h4>	
+				<form ng-submit="uploadProfPic()">
+					<label>
+						<input id="file" type="file" ng-model="fileName">
+					</label> <br>
+						
+					<button type="submit">Add file</button>
+	
+				</form>
+
+
 			</div>
-			<button ng-click="editAbout=true" ng-hide="editAbout">Edit Info</button>
-			<div ng-show = "editAbout">
-				<form>
+			<div>
+				<h2>About Me </h2>
+				<div ng-hide = "editAbout">
 					<div>
-						<label>First Name</label><br>
-						<input ng-model="userInfo.firstName">
+						<label>First Name</label> <br>
+						<p>{{userInfo.firstName}}</p>
 					</div>
 					<div>
 						<label>Last Name</label><br>
-						<input ng-model="userInfo.lastName">
+						<p>{{userInfo.lastName}}</p>
 					</div>
 					<div>
 						<label>Email</label><br>
-						<input ng-model="userInfo.email">
+						<p>{{userInfo.email}}</p>
 					</div>
 					<div>
 						<label>Date of Birth (MM/DD/YYYY)</label><br>
-						<input ng-model="userInfo.DOB">
+						<p>{{userInfo.DOB}}</p>
 					</div>
-					<button ng-click="updateAbout(); editAbout=false">Update Info</button>
-				</form>
+				</div>
+				<button ng-click="editAbout=true" ng-hide="editAbout">Edit Info</button>
+				<div ng-show = "editAbout">
+					<form>
+						<div>
+							<label>First Name</label><br>
+							<input ng-model="userInfo.firstName">
+						</div>
+						<div>
+							<label>Last Name</label><br>
+							<input ng-model="userInfo.lastName">
+						</div>
+						<div>
+							<label>Email</label><br>
+							<input ng-model="userInfo.email">
+						</div>
+						<div>
+							<label>Date of Birth (MM/DD/YYYY)</label><br>
+							<input ng-model="userInfo.DOB">
+						</div>
+						<button ng-click="updateAbout(); editAbout=false">Update Info</button>
+					</form>
+				</div>	
 			</div>	
 		</div>
 		<div ng-show = "(index === 2)" class = "medHistory">

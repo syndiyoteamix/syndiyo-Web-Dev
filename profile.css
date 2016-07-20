@@ -115,6 +115,18 @@
 	text-align: center;
 }
 
+.profDiv {
+	margin: 0px auto;
+}
+
+.profImg {
+	display: block;
+	margin: 0px auto;
+	max-width: 150px;
+	max-height: 150px;
+	border-radius: 50px;
+}
+
 @media(max-width: 400px){
 
 }
