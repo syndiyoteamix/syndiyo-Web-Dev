@@ -18,6 +18,10 @@
 	margin-top: -20px;
 }
 
+.headerRight a { 
+	text-decoration: none;
+}
+
 .headerRight h1 { 
 	text-align: right;
 	padding-right: 10px;
