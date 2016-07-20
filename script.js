@@ -187,6 +187,9 @@ app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){
     });
 
   }
+ }); 
+
+
 
   // var imgRef = firebase.storage().ref('imageslionSex1.png');
   // storageRef.getDownloadURL().then(function(url) {
