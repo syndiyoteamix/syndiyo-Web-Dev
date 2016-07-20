@@ -205,13 +205,16 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
 
     }     
 });
-app.controller('RecordsCtrl', function(currentAuth, $scope, $firebaseArray){ 
-    var HealthRecordsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
-    $scope.healthRecords = $firebaseArray(HealthRecordsRef);
+app.controller('RecordsCtrl', function(currentAuth, $scope, $firebaseArray, $firebaseObject){ 
+    var userRef = firebase.database().ref().child('users').child(currentAuth.uid);
+    $scope.healthRecords = $firebaseArray(userRef.child('healthRecords'));
+    $scope.userInfo = $firebaseObject(userRef.child('basicInfo'));
     console.log($scope.healthRecords);
 });
 
-app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){ 
+app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray, $firebaseObject){ 
+  var userRef = firebase.database().ref().child('users').child(currentAuth.uid).child('basicInfo');
+  $scope.userInfo = $firebaseObject(userRef);
   var HealthRecordsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
   $scope.healthRecords = $firebaseArray(HealthRecordsRef);
   $scope.uploadFile = function() { 
@@ -255,6 +258,8 @@ app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){
 
 
 app.controller('RequestCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 
+  var userRef = firebase.database().ref().child('users').child(currentAuth.uid).child('basicInfo');
+  $scope.userInfo = $firebaseObject(userRef);
   var doctorRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
   $scope.doctors = $firebaseObject(doctorRef);
   console.log($scope.doctors);
@@ -263,43 +268,49 @@ app.controller('RequestCtrl', function($scope, $firebaseObject, $firebaseAuth, c
   $scope.sendMail = function() {
     var email = $scope.selectedDoctor.email;
     console.log($scope.selectedDoctor);
-    window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=This request is for any and all medical records related to services provided, and may include but not limited to Clinic Notes, Laboratory Reports, Radiology Reports, X-Ray Film/Images, EKG, History & Physical Exam, Discharge Summary, Progress Notes, Consultation Report, Specialist Notes, Department Record, Billing Record or any other documents belonging to Patient's medical records. I understand that I have a right to receive a copy of my health information under the Health Insurance Portability and Accountability Act of 1996. Please consider this notification my official request in writing for my health information. The purpose for the release of health information is for archiving and personal use only.");
+    window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=I am requesting my previous medical records");
     $scope.selectedDoctor = "";
   };
 
   $scope.sendMail2 = function() {
       var email = $scope.recipient;
 
-      window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=This request is for any and all medical records related to services provided, and may include but not limited to Clinic Notes, Laboratory Reports, Radiology Reports, X-Ray Film/Images, EKG, History & Physical Exam, Discharge Summary, Progress Notes, Consultation Report, Specialist Notes, Department Record, Billing Record or any other documents belonging to Patient's medical records. I understand that I have a right to receive a copy of my health information under the Health Insurance Portability and Accountability Act of 1996. Please consider this notification my official request in writing for my health information. The purpose for the release of health information is for archiving and personal use only.");      
+      window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=I am requesting my previous medical records");
       $scope.recipient = "";
     };
 });
 
 app.controller('SendCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 
+  var userRef = firebase.database().ref().child('users').child(currentAuth.uid).child('basicInfo');
+  $scope.userInfo = $firebaseObject(userRef);
   var doctorRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
   $scope.doctors = $firebaseObject(doctorRef);
   console.log($scope.doctors);
   var recordRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
   $scope.records = $firebaseObject(recordRef);
-  console.log($scope.records);
+  
+
 
   $scope.sendRecord = function() {
       console.log($scope.selectedRecord);
+      console.log($scope.selectedRecord.image);
+      $scope.attach = $scope.selectedRecord.image;
   };
 
 
   $scope.sendMail = function() {
     var email = $scope.selectedDoctor.email;
-    console.log($scope.selectedDoctor);
-    window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=This request is for any and all medical records related to services provided, and may include but not limited to Clinic Notes, Laboratory Reports, Radiology Reports, X-Ray Film/Images, EKG, History & Physical Exam, Discharge Summary, Progress Notes, Consultation Report, Specialist Notes, Department Record, Billing Record or any other documents belonging to Patient's medical records. I understand that I have a right to receive a copy of my health information under the Health Insurance Portability and Accountability Act of 1996. Please consider this notification my official request in writing for my health information. The purpose for the release of health information is for archiving and personal use only.");
+    window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=I am sending my previous medical records      " + $scope.attach);
     $scope.selectedDoctor = "";
+    $scope.selectedRecord = "";
   };
 
   $scope.sendMail2 = function() {
       var email = $scope.recipient;
 
-      window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=This request is for any and all medical records related to services provided, and may include but not limited to Clinic Notes, Laboratory Reports, Radiology Reports, X-Ray Film/Images, EKG, History & Physical Exam, Discharge Summary, Progress Notes, Consultation Report, Specialist Notes, Department Record, Billing Record or any other documents belonging to Patient's medical records. I understand that I have a right to receive a copy of my health information under the Health Insurance Portability and Accountability Act of 1996. Please consider this notification my official request in writing for my health information. The purpose for the release of health information is for archiving and personal use only.");      
+      window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=I am sending my previous medical records     " + $scope.attach);    
       $scope.recipient = "";
+      $scope.selectedRecord = "";
     };
 });
 
