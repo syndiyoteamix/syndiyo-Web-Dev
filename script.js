@@ -30,7 +30,12 @@ app.config(function($routeProvider){
   })
   $routeProvider.when('records/:recordsId', {
     controller: 'RecordsCtrl', 
-    templateUrl: '/templates/records.html'
+    templateUrl: '/templates/records.html',
+    resolve: { 
+      'currentAuth': function($firebaseAuth) {
+      return $firebaseAuth().$requireSignIn();
+      }
+    }
   })
   $routeProvider.when('/addRecords', {
     controller: 'AddRecordsCtrl', 
