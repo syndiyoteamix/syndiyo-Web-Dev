@@ -32,6 +32,15 @@ app.config(function($routeProvider){
     controller: 'RecordsCtrl', 
     templateUrl: '/templates/records.html'
   })
+  $routeProvider.when('/addRecords', {
+    controller: 'AddRecordsCtrl', 
+    templateUrl: '/templates/addRecords.html',
+    resolve: { 
+      'currentAuth': function($firebaseAuth) {
+      return $firebaseAuth().$requireSignIn();
+      }
+    }
+  })
   $routeProvider.when('request/:requestId', {
     controller: 'RequestCtrl', 
     templateUrl: '/templates/request.html'
@@ -127,6 +136,55 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
      $scope.updateInsurance = function() {
         $scope.insuranceInfo.$save();
     }
+});
+
+app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){ 
+  var HealthRecordsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
+  $scope.healthRecords = $firebaseArray(HealthRecordsRef);
+  $scope.uploadFile = function() { 
+    var f = document.getElementById('file').files[0],
+        r = new FileReader();
+        console.log(f);
+      r.onloadend = function(e){
+        var data = e.target.result;
+      } 
+      r.readAsBinaryString(f);
+    var storageRef = firebase.storage().ref(f.name);
+    var uploadTask = storageRef.put(f);
+    
+    uploadTask.on('state_changed', function(snapshot){
+      // Observe state change events such as progress, pause, and resume
+      // See below for more detail
+    }, function(error) {
+      // Handle unsuccessful uploads
+    }, function() {
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      $scope.downloadURL = uploadTask.snapshot.downloadURL;
+      console.log($scope.downloadURL);
+      $scope.healthRecords.$add({
+        image: $scope.downloadURL, 
+        title: $scope.imgTitle,
+        category: $scope.imgCategory, 
+        notes: $scope.imgNotes,
+        created_at: Date.now()
+      });
+
+
+    });
+
+  }
+
+  // var imgRef = firebase.storage().ref('imageslionSex1.png');
+  // storageRef.getDownloadURL().then(function(url) {
+  // // Get the download URL for 'images/stars.jpg'
+  // // This can be inserted into an <img> tag
+  // // This can also be downloaded directly
+  // }).catch(function(error) {
+  // // Handle any errors
+  // });
+
+
 });
 
 
