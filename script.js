@@ -96,7 +96,7 @@ app.controller('SignUpCtrl', function($scope, $firebaseArray, $firebaseObject, $
       $scope.userInfo.DOB = $scope.DOB;
       $scope.userInfo.SSN = $scope.SSN;
       $scope.userInfo.$save();
-      $location.path('/profile');
+      $location.path('/');
     }).catch(function(error) {
         $scope.errorMsg = "Error: " + error;
         console.error("Error: ", error);
@@ -148,6 +148,16 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
      $scope.updateInsurance = function() {
         $scope.insuranceInfo.$save();
     }
+    //about Me
+    var userInfoRef = userRef.child('basicInfo');
+    $scope.userInfo = $firebaseObject(userInfoRef);
+      // $scope.userInfo.firstName = $scope.firstName;
+      // $scope.userInfo.lastName = $scope.lastName;
+      // $scope.userInfo.email = $scope.email;
+      // $scope.userInfo.DOB = $scope.DOB;
+     $scope.updateAbout = function() {
+        $scope.userInfo.$save();
+        }  
 });
 
 
