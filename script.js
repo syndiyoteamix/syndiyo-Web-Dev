@@ -41,9 +41,15 @@ app.config(function($routeProvider){
       }
     }
   })
-  $routeProvider.when('request/:requestId', {
+  //  TOOK OUT REQUEST ID FOR TESTING PURPOSES
+  $routeProvider.when('/request', {
     controller: 'RequestCtrl', 
-    templateUrl: '/templates/request.html'
+    templateUrl: '/templates/request.html',
+    resolve: { 
+      'currentAuth': function($firebaseAuth) {
+       return $firebaseAuth().$requireSignIn();
+      }
+    }
   })
   $routeProvider.when('send/:sendId', {
     controller: 'SendCtrl', 
@@ -144,6 +150,7 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
     }
 });
 
+
 app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){ 
   var HealthRecordsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('healthRecords');
   $scope.healthRecords = $firebaseArray(HealthRecordsRef);
@@ -190,6 +197,34 @@ app.controller('AddRecordsCtrl', function(currentAuth, $scope, $firebaseArray){
   // // Handle any errors
   // });
 
+
+
+app.controller('RequestCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 
+  var UserRef = firebase.database().ref().child('users').child(currentAuth.uid);
+  $scope.user = $firebaseObject(UserRef);
+  var userName = $scope.user.name;
+  var doctorRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
+  $scope.doctors = $firebaseObject(doctorRef);
+  console.log($scope.doctors);
+
+
+  $scope.sendMail = function() {
+    var email = $scope.selectedDoctor.email;
+    console.log($scope.selectedDoctor);
+    window.location.href = ("mailto:" + email +'?subject=hello&body=the_body&attachment=pdf.pdf');
+    $scope.selectedDoctor = "";
+  };
+
+  $scope.sendMail2 = function() {
+      var email = $scope.recipient;
+      
+
+      window.location.href = ("mailto:" + email +'?subject=Medical Record Request&body=I, ' + userName + ' , ("Patient") hereby request my Health Records.');
+      
+      // window.open('mailto:'+email+'?subject=hello&body=the_body');
+      // window.open('mailto:'+email2+'?subject=hello&body=the_body');
+      $scope.recipient = "";
+    };
 
 });
 
