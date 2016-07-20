@@ -1,0 +1,127 @@
+.container1 { 
+	padding-top: 20px;
+
+}
+
+.Slogo { 
+	width: 280px;
+	height: 67px;
+}
+
+.lionLogo { 
+	height: 67px;
+	width: 67px;
+	border-radius: 50%;
+}
+
+.headerRight { 
+	margin-top: -20px;
+}
+
+.headerRight h1 { 
+	text-align: right;
+	padding-right: 10px;
+}
+
+.container2 { 
+	background-color: #e6e6e6;
+	height: 700px;
+	padding-top: 50px;
+}
+
+.boxesCol { 
+	height: 600px;
+	background-color: #1b4162;
+}
+
+
+.boxesCol div { 
+	height: 300px;
+}
+
+
+.sq1 img { 
+	padding-top: 20px;
+	padding-left: 5px;
+	margin: 0px auto;
+	width: 100%;	
+}
+
+.sq2 img { 
+	padding-top: 10px;
+	padding-left: 5px;
+	margin: 0px auto;
+	width: 100%;	
+}
+
+
+/*.steph { 
+	margin: 0px auto;
+	width: 100%;
+
+}*/
+@media (max-width: 992px) {
+
+.Slogo { 
+	width: 150px;
+	height: 36px;
+}
+
+.lionLogo { 
+	height: 36px;
+	width: 36px;
+	border-radius: 50%;
+}
+
+.headerRight { 
+	margin-top: -60px;
+}
+
+.headerRight h1 { 
+	text-align: right;
+	padding-right: 10px;
+	font-size: 30px;
+}
+
+.container2 { 
+	background-color: #e6e6e6;
+	height: 1100px;
+	padding-top: 50px;
+}
+
+.boxesCol { 
+	margin: 0px auto;
+	width: 50%;
+	height: 1000px;
+	background-color: #1b4162;
+	
+}
+
+
+.boxesCol div { 
+	height: 300px;
+}
+
+
+.sq1 img { 
+	padding-top: 20px;
+	padding-left: 5px;
+	margin: 0px auto;
+	width: 90%;	
+}
+
+.sq2 img { 
+	padding-top: 10px;
+	padding-left: 5px;
+	margin: 0px auto;
+	width: 90%;	
+}
+
+}
+
+
+
+
+
+
+
