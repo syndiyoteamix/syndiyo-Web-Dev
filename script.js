@@ -132,6 +132,12 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
             'email': $scope.newEmail,
             'fax': $scope.newFax
         })
+        $scope.newDoctorName = "";
+        $scope.newPracticeName = "";
+        $scope.category = "";
+        $scope.newPhone = "";
+        $scope.newEmail = "";
+        $scope.newFax = "";
     }
      $scope.updateInsurance = function() {
         $scope.insuranceInfo.$save();
