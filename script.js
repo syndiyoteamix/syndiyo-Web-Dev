@@ -41,9 +41,15 @@ app.config(function($routeProvider){
     controller: 'RecordsCtrl', 
     templateUrl: '/templates/records.html'
   })
-  $routeProvider.when('request/:requestId', {
+  //  TOOK OUT REQUEST ID FOR TESTING PURPOSES
+  $routeProvider.when('/request', {
     controller: 'RequestCtrl', 
-    templateUrl: '/templates/request.html'
+    templateUrl: '/templates/request.html',
+    resolve: { 
+      'currentAuth': function($firebaseAuth) {
+       return $firebaseAuth().$requireSignIn();
+      }
+    }
   })
   $routeProvider.when('send/:sendId', {
     controller: 'SendCtrl', 
@@ -138,13 +144,29 @@ app.controller('ProfileCtrl', function($scope, $firebaseArray, $firebaseAuth, $f
     }
 });
 
+app.controller('RequestCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 
+  var doctorRef = firebase.database().ref().child('users').child(currentAuth.uid).child('doctors');
+  $scope.doctors = $firebaseObject(doctorRef);
+  console.log($scope.doctors);
 
-app.controller('HomeCtrl', function($scope, $firebaseObject, $firebaseAuth, currentAuth) { 
-  $scope.curUser = currentAuth; 
-  var ref = firebase.database().ref().child('channels');
-  $scope.channels = $firebaseObject(ref);
+
+  $scope.sendMail = function() {
+    var email = $scope.selectedDoctor.email;
+    console.log($scope.selectedDoctor);
+    window.location.href = ("mailto:" + email +'?subject=hello&body=the_body&attachment=pdf.pdf');
+    $scope.selectedDoctor = "";
+  };
+
+  $scope.sendMail2 = function() {
+      var email = $scope.recipient;
+
+      window.location.href = ("mailto:" + email +'?subject=hello&body=the_body&attachment=pdf.pdf');
+      
+      // window.open('mailto:'+email+'?subject=hello&body=the_body');
+      // window.open('mailto:'+email2+'?subject=hello&body=the_body');
+      $scope.recipient = "";
+    };
 });
-
 
 
 
