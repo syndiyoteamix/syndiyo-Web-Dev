@@ -1,6 +1,6 @@
-<div class="big_class">
-</div>
-<div class="navbarTop">
+<!-- <div class="big_class">
+</div> -->
+<!-- <div class="navbarTop">
 			<a href="#/"><img class="Slogo" src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/SyndiyoLogo_zpsyudaapze.png" border="0" alt=" photo SyndiyoLogo_zpsyudaapze.png"/></a>			
 			<div class="headerRight">
 			<img class="lionLogo" src="{{userInfo.profPic}}" border="0" alt=" photo lionProfile_zpsrnqzrjmx.png"/>
@@ -11,8 +11,11 @@
 				<a href="/#/login" class="signout" ng-click="authObj.$signOut();">Sign out</a>
 			</div>
 		</div>
-</div>
+</div> -->
 <div class="navbarLeft">
+	<div class="profDiv">
+		<img class ="leftPic" src="{{userInfo.profPic}}"/>
+	</div>
 	<ul>
 		<li><button ng-click="index = 0">Home</li>
 		<li><button ng-click="index = 1">About Me</li>
@@ -22,6 +25,9 @@
 	</ul>
 </div>
 <div class = "outerContainer">
+		<div class ="topLogo"> 
+			<img src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/SyndiyoLogo_zpsyudaapze.png">
+		</div>	
 	<div class="innerContainer">
 	<div ng-show = "(index === 0)" class="home">
 		<div class="row">
