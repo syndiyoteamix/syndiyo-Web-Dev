@@ -1,6 +1,6 @@
-<div class="big_class">
-</div>
-<div class="navbarTop">
+<!-- <div class="big_class">
+</div> -->
+<!-- <div class="navbarTop">
 			<a href="#/"><img class="Slogo" src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/SyndiyoLogo_zpsyudaapze.png" border="0" alt=" photo SyndiyoLogo_zpsyudaapze.png"/></a>			
 			<div class="headerRight">
 			<img class="lionLogo" src="{{userInfo.profPic}}" border="0" alt=" photo lionProfile_zpsrnqzrjmx.png"/>
@@ -11,31 +11,44 @@
 				<a href="/#/login" class="signout" ng-click="authObj.$signOut();">Sign out</a>
 			</div>
 		</div>
-</div>
+</div> -->
 <div class="navbarLeft">
+	<div class="profDiv">
+		<img class ="leftPic" src="{{userInfo.profPic}}"/>
+		<p>{{userInfo.firstName}} {{userInfo.lastName}} <p>
+	</div>
 	<ul>
 		<li><button ng-click="index = 0">Home</li>
 		<li><button ng-click="index = 1">About Me</li>
 		<li><button ng-click="index = 2">Medical History</li>
 		<li><button ng-click="index = 3">Doctor Info</li>
 		<li><button ng-click="index = 4">Insurance Info</li>
+		<li><button ng-click="authObj.$signOut();">Sign out</li>
 	</ul>
+	<div class="contact">
+		<p>Want to Contact Us? Like our product and want to support? You can email us at syndiyoteam@gmail.com or Venmo us at 646-416-4874</p>
+	</div>	
+
 </div>
 <div class = "outerContainer">
+		<div class ="topLogo"> 
+			<img src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/SyndiyoLogo_zps1brx1amm.png">
+		</div>	
 	<div class="innerContainer">
 	<div ng-show = "(index === 0)" class="home">
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="sq">
-					<a href="#/records/">
-					<img src="http://i347.photobucket.com/albums/p448/robertcas257/fdd1c006-4ed5-4ac0-a427-f322c859897f_zpswvi0g6vz.png" border="0" alt=" photo fdd1c006-4ed5-4ac0-a427-f322c859897f_zpswvi0g6vz.png"/>
+					<a href="#/records"><img class="myRecordsImg" src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/Request%20Records_zpsonb0xpvw.png">
+					<p>My Records</p>
 					</a>
 				</div>	
 			</div>
 			<div class="col-sm-6">
 				<div class="sq">
-				<!-- added link to request here -->
-					<a href="#/request/"><img src="http://i347.photobucket.com/albums/p448/robertcas257/9394bdac-ab3e-4557-8c9c-e5e59510a1c1_zpseloyje7h.png" border="0" alt=" photo 9394bdac-ab3e-4557-8c9c-e5e59510a1c1_zpseloyje7h.png"/></a>
+					<a href="#/request/"><img src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/My%20Records_zpsd2dfoemp.png"/>
+					<p>Request</p>
+					</a>
 				</div>
 			</div>	
 		</div>
@@ -43,13 +56,16 @@
 			<div class="col-sm-6">
 				<div class="sq">
 					<a href="#/addRecords/">
-					<img src="http://i347.photobucket.com/albums/p448/robertcas257/c32d2e4f-38c1-4512-9746-90fd39946396_zpsbzoznrpb.png" border="0" alt=" photo c32d2e4f-38c1-4512-9746-90fd39946396_zpsbzoznrpb.png"/>
+					<img src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/Add%20Record_zpsjkgzqtqv.png"/>
+					<p>Add Record</p>
 				</a>
 				</div>
 			</div>	
 			<div class="col-sm-6">
 				<div class="sq">
-					<a href="#/send/"><img src="http://i347.photobucket.com/albums/p448/robertcas257/d1316c4e-b058-476a-9828-5b829420761b_zpsysgqzza2.png" border="0" alt=" photo d1316c4e-b058-476a-9828-5b829420761b_zpsysgqzza2.png"/></a>
+					<a href="#/send/"><img src="http://i347.photobucket.com/albums/p448/robertcas257/Syndiyo/Send%20Records_zpstbjecpsu.png">
+					<p>Send</p>
+					</a>
 				</div>
 			</div>
 		</div>

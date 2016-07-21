@@ -4,18 +4,45 @@
 	padding: 0px;
 }
 .outerContainer {
-	margin-top:  60px;
-	margin-left: 150px;
+	/*margin-top:  60px;
+*/	margin-left: 150px;
 	padding: 40px;
 	z-index: -1;
+	background-image: url('http://i347.photobucket.com/albums/p448/robertcas257/5cccb87d-4524-4934-9423-239e78d849f9_zps131vj6ye.png');
+	height: 1000px;
 }
 .innerContainer {
 	max-width: 900px;
 	margin: 0px auto;
+	padding-top: 20px;
 }
+
+.topLogo { 
+	text-align: center;
+	margin-top: -22px;
+}
+
+.topLogo img { 
+	display: block;
+	margin: 0px auto;
+	height: 100px;
+	width: 405px;
+}
+
 .Slogo { 
 	height: 40px;
 }
+
+.leftPic { 
+	display: block;
+	margin: 0px auto;
+	margin-top: 5px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+
+}
+
 .lionLogo { 
 	display: block;
 	float: left;
@@ -58,13 +85,26 @@
 	display: block;
 	padding: 10px;
 	margin: 0px auto;
-	width: 100%;	
-	border-radius: 20px;
+	/*width: 100%;*/	
+	/*border-radius: 20px;*/
 }
+
+.sq p { 
+	text-decoration: none; 
+	color: black;
+	font-size: 40px; 
+	text-align: center;
+
+}
+
+.sq a { 
+
+}
+
 .profileContent {
 	background-color: #e6e6e6;
 	min-height: 400px;
-	border-radius: 20px;
+	border-radius: 5px;
 	padding: 15px;
 }
 .navbarTop {
@@ -79,15 +119,17 @@
 .navbarLeft {
 	position: fixed;
 	left: 0;
-	top: 60px;
+	/*top: 60px;
 	padding-top: 20px;
-	width: 150px;
+*/	width: 200px;
 	height: 100%;
 	text-align: center;
-	background-color: white;
+	background-color: #134367;
 }
 .navbarLeft ul {
 	list-style-type: none;
+	padding-top: 20px;
+
 }
 .navbarLeft li {
 	width: 80%;
@@ -98,9 +140,10 @@
 .navbarLeft li button{
 	width: 100%;
 	height: 100%;
-	background-color: #e6e6e6;
+	background-color: #134367;
 	border-radius: 5px;
 	border: none;
+	color: #e6e6e6;
 }
 
 .navbarLeft li button:hover{
@@ -117,6 +160,14 @@
 
 .profDiv {
 	margin: 0px auto;
+	padding-top: 20px;
+}
+
+.profDiv p { 
+	padding-top: 10px;
+	color: white;
+
+
 }
 
 .profImg {
@@ -125,6 +176,18 @@
 	max-width: 150px;
 	max-height: 150px;
 	border-radius: 50px;
+}
+
+.contact { 
+	margin-top: 60px;
+	
+
+}
+
+.contact p { 
+	font-size: 12px; 
+	color: #a8a8a8;
+
 }
 
 @media(max-width: 400px){

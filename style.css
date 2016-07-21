@@ -1,5 +1,4 @@
 .big_class {
-	background-color: #1b4162;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -8,12 +7,22 @@
 	z-index: -1;
 }
 .pageContent {
+<<<<<<< HEAD
 	width: 85%;
 	margin: 100px auto;
 	padding: 20px;
 	border-radius: 20px;
 	background-color: #e6e6e6;;
 	min-height: 300px;
+=======
+	position: fixed;
+	width: 100%;
+	margin: 0px auto;
+	top: 50%;
+	transform: translate(0, -50%);
+
+	
+>>>>>>> dd603a464db645d8cefb5285f472f9a70b5f90e5
 }
 
 

@@ -14,6 +14,12 @@
 
 }
 
+.main p img { 
+	margin: 0px auto;
+	width: 30%;
+
+}
+
 .cr { 
 	color: #2f5878;
 	font-size: 22px;
