@@ -151,6 +151,10 @@
 	border: none;
 	color: #e6e6e6;
 }
+.navbarLeft li button a{
+	text-decoration: none;
+	color: white;
+}
 
 .navbarLeft li button:hover{
 	border: 2px solid #1b4162;
@@ -172,8 +176,6 @@
 .profDiv p { 
 	padding-top: 10px;
 	color: white;
-
-
 }
 
 .profImg {
