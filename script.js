@@ -169,8 +169,6 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
         $scope.userInfo.$save();
         } 
 
-    var ProfPicsRef = firebase.database().ref().child('users').child(currentAuth.uid).child('basicInfo').child('profPic');
-    $scope.profPic = $firebaseObject(ProfPicsRef);
     $scope.uploadProfPic = function() { 
     var f = document.getElementById('file').files[0],
         r = new FileReader();
@@ -192,9 +190,8 @@ app.controller('HomeCtrl', function($scope, $firebaseArray, $firebaseAuth, $fire
       console.log($scope.profPic);
       // For instance, get the download URL: https://firebasestorage.googleapis.com/...
       $scope.downloadURL = uploadTask.snapshot.downloadURL;
-      console.log($scope.downloadURL);
-      $scope.profPic=$scope.downloadURL;
-      $scope.profPic.$save(); 
+      $scope.userInfo.profPic = $scope.downloadURL;
+      $scope.userInfo.$save(); 
 
 
       // $scope.imgTitle = "";

@@ -25,12 +25,13 @@
 .topLogo img { 
 	display: block;
 	margin: 0px auto;
-	height: 100px;
-	width: 405px;
+	height: 70px;
 }
 
 .Slogo { 
 	height: 40px;
+	margin-top: 5px;
+	margin-left: 5px;
 }
 
 .leftPic { 
