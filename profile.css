@@ -99,13 +99,15 @@
 	left: 0;
 	/*top: 60px;
 	padding-top: 20px;
-*/	width: 150px;
+*/	width: 200px;
 	height: 100%;
 	text-align: center;
-	background-color: #e6e6e6;
+	background-color: #134367;
 }
 .navbarLeft ul {
 	list-style-type: none;
+	padding-top: 20px;
+
 }
 .navbarLeft li {
 	width: 80%;
@@ -116,9 +118,10 @@
 .navbarLeft li button{
 	width: 100%;
 	height: 100%;
-	background-color: #e6e6e6;
+	background-color: #134367;
 	border-radius: 5px;
 	border: none;
+	color: #e6e6e6;
 }
 
 .navbarLeft li button:hover{
@@ -135,6 +138,14 @@
 
 .profDiv {
 	margin: 0px auto;
+	padding-top: 20px;
+}
+
+.profDiv p { 
+	padding-top: 10px;
+	color: white;
+
+
 }
 
 .profImg {
@@ -143,6 +154,18 @@
 	max-width: 150px;
 	max-height: 150px;
 	border-radius: 50px;
+}
+
+.contact { 
+	margin-top: 60px;
+	
+
+}
+
+.contact p { 
+	font-size: 12px; 
+	color: #a8a8a8;
+
 }
 
 @media(max-width: 400px){
