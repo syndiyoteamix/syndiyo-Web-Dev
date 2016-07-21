@@ -1,8 +1,53 @@
+.recordsContent {
+	margin-top: 60px;
+	padding: 20 100px;
+	text-align: center;
+}
+.recordsLst {
+	list-style-type: none;
+}
+.recordsLst li {
+	margin: 10px;
+	padding: 10px;
+	background: #e6e6e6;
+	border-radius: 5px;
+}
+
+.recordText {
+	float: left;
+	width: 300px;
+}
 .recordImg {
 	width: 200px;
+	float: left;
 	color: red;
 }
 .recordImg img {
-	width: 200px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+}
+.fullImg {
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0,0,0,.5);
+}
+
+.fullImg img {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 70%;
+	margin: 0px auto;
+	border-radius: 8px;
+}
+.recordsHdr {
+	text-align: center;
 }
 

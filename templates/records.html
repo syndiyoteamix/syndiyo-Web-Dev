@@ -11,16 +11,18 @@
 			</div>
 		</div>
 </div>
-<div class="pageContent">
-<ul>
-	<li ng-repeat="record in healthRecords track by $index">
-		<div>
-		<p>Title: {{record.title}}</p>
-		<p>Category: {{record.category}}</p>
-		<p>Notes: {{record.notes}}</p>
-		<p>Created: {{record.date}}</p>
-	</div>
+<div class = "recordsContent clearfix">
+<h2 class="recordsHdr">My Records</h2>
+<ul class = "recordsLst clearfix">
+	<li ng-repeat="record in healthRecords track by $index" class="clearfix">
 		<div class="recordImg">
+			<img ng-click="showLarge = true" src="{{record.image}}"/>
+		</div>
+		<div class = "recordText">
+			<p>Title: {{record.title}} | Category: {{record.category}} | Created: {{record.date}}</p>
+			<p>Notes: {{record.notes}}</p>
+		</div>
+		<div class="fullImg" ng-show="showLarge" ng-click="showLarge = false">
 			<img src="{{record.image}}"/>
 		</div>
 	</li>
