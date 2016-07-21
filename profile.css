@@ -14,6 +14,7 @@
 .innerContainer {
 	max-width: 900px;
 	margin: 0px auto;
+	padding-top: 20px;
 }
 
 .topLogo { 
@@ -84,9 +85,22 @@
 	display: block;
 	padding: 10px;
 	margin: 0px auto;
-	width: 100%;	
-	border-radius: 20px;
+	/*width: 100%;*/	
+	/*border-radius: 20px;*/
 }
+
+.sq p { 
+	text-decoration: none; 
+	color: black;
+	font-size: 40px; 
+	text-align: center;
+
+}
+
+.sq a { 
+
+}
+
 .profileContent {
 	background-color: #e6e6e6;
 	min-height: 400px;
