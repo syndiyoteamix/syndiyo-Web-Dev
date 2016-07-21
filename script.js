@@ -292,23 +292,24 @@ app.controller('SendCtrl', function($scope, $firebaseObject, $firebaseAuth, curr
 
 
   $scope.sendRecord = function() {
-      console.log($scope.selectedRecord);
-      console.log($scope.selectedRecord.image);
       $scope.attach = $scope.selectedRecord.image;
   };
 
 
+
   $scope.sendMail = function() {
+    console.log("test1");
     var email = $scope.selectedDoctor.email;
-    window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=I am sending my previous medical records      " + $scope.attach);
+    window.location.href = ("mailto:" + email +"?subject=Sending Medical Records &body=I am sending my previous medical records   %0D%0A%0D%0A%0D%0A" + $scope.attach);
     $scope.selectedDoctor = "";
     $scope.selectedRecord = "";
   };
 
   $scope.sendMail2 = function() {
+      console.log("test2");
       var email = $scope.recipient;
 
-      window.location.href = ("mailto:" + email +"?subject=Medical Record Request&body=I am sending my previous medical records     " + $scope.attach);    
+      window.location.href = ("mailto:" + email +"?subject=Sending Medical Records &body=I am sending my previous medical records  %0D%0A%0D%0A%0D%0A" + $scope.attach);   
       $scope.recipient = "";
       $scope.selectedRecord = "";
     };
