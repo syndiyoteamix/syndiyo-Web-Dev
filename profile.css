@@ -29,7 +29,7 @@
 }
 
 .Slogo { 
-	height: 40px;
+	width: 205px;
 	margin-top: 5px;
 	margin-left: 5px;
 }
@@ -99,7 +99,12 @@
 }
 
 .sq a { 
+	margin: 0px auto;
+}
 
+.recordButton {
+	max-width: 175px;
+	margin: 0px auto;
 }
 
 .profileContent {
@@ -180,7 +185,7 @@
 }
 
 .contact { 
-	margin-top: 60px;
+	margin-top: 35px;
 	
 
 }
