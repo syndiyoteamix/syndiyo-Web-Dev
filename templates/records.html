@@ -19,7 +19,7 @@
 			<img ng-click="showLarge = true" src="{{record.image}}"/>
 		</div>
 		<div class = "recordText">
-			<p>Title: {{record.title}} | Category: {{record.category}} | Created: {{record.date}}</p>
+			<p>Title: {{record.title}} | Category: {{record.category}} | Created: {{record.created_at | date: 'short'}}</p>
 			<p>Notes: {{record.notes}}</p>
 		</div>
 		<div class="fullImg" ng-show="showLarge" ng-click="showLarge = false">

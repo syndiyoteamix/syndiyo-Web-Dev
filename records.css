@@ -23,6 +23,7 @@
 	color: red;
 }
 .recordImg img {
+	display: block;
 	width: 100px;
 	height: 100px;
 	border-radius: 50px;
@@ -49,5 +50,18 @@
 }
 .recordsHdr {
 	text-align: center;
+}
+@media(max-width: 750px){
+	.recordText {
+	float: left;
+	width: 100%;
+	}	
+	.recordImg {
+		width: 100%;
+	}
+	.recordImg img {
+		margin: auto;
+	}
+
 }
 
