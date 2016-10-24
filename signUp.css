@@ -6,6 +6,10 @@
 
 }
 
+.signBox {
+	padding: 30px 0px 30px 0px;
+}
+
 .signLogo img { 
 	margin: 0px auto;
 	width: 40%;
