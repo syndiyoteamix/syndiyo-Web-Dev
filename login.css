@@ -44,7 +44,7 @@
 	margin-bottom: 15px;
 }
 
-.beta-tag {
+.beta-tag, .beta-tag strong {
 	color: #999999;
 	font-size: 12px;
 	font-style: bold;
