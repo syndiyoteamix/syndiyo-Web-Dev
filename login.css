@@ -16,7 +16,9 @@
 
 .main p img { 
 	margin: 0px auto;
-	width: 30%;
+	width: 40%;
+	min-width: 360px;
+	max-width: 512px;
 
 }
 
@@ -31,17 +33,20 @@
 
 }
 
-.email { 
-	padding-bottom: 10px;
 
+.form {
+	width: 200px;
+	margin: 0px auto;
 }
 
-.email input { 
-	
 
+.login-btn {
+	margin-bottom: 15px;
 }
 
-.password { 
-	padding-bottom: 10px;
+.beta-tag {
+	color: #999999;
+	font-size: 12px;
+	font-style: bold;
 
 }

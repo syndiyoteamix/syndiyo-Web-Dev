@@ -8,13 +8,10 @@
 
 .signLogo img { 
 	margin: 0px auto;
-	width: 35%;
-	
-
-
+	width: 40%;
+	min-width: 360px;
+	max-width: 512px;
 }
-
-
 
 .cn { 
 	color: #2f5878;
@@ -35,5 +32,6 @@
 
 .inputs input { 
 	width: 300px;
+	margin: 0px auto;
 
 }

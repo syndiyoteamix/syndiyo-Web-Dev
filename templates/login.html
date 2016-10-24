@@ -6,21 +6,24 @@
 
       <h2>Log in</h2>
 
-      <form ng-submit="login()"> 
+      <div class="form">
+        <form ng-submit="login()"> 
 
-        <div class="email">
-          <input placeholder="Email" ng-model="email">
-        </div>
-        
-        <div class="password">
-          <input type="password" placeholder="Password" ng-model="password">
-        </div>
-        
-        <button>Submit</button>
+          <div class="email form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="email">
+          </div>
+          
+          <div class="password form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="password">
+          </div>
+          
+          <button class="btn btn-default login-btn">Submit</button>
 
-        <p>Not signed up? Do it <a href="#/signUp">here!</a>
-        </p>
-        
-      </form>
+          <p>Not signed up? Do it <a href="#/signUp">here!</a>
+          </p>
+          <p class="beta-tag">- PRODUCT IN <strong>BETA</strong> -</p>
+          
+        </form>
+      </div>  
     </div>
 </div>
